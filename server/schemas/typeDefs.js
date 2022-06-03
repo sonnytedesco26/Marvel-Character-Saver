@@ -7,7 +7,7 @@ const typeDefs = gql`
     username: String
     email: String
     characterCount: Int
-    savedCharactera: [Character]
+    savedCharacters: [Character]
   }
 
   type Character {
