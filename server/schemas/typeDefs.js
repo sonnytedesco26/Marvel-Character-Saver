@@ -11,15 +11,15 @@ const typeDefs = gql`
   }
 
   type Character {
-    characterId: Number!
+    characterId: ID!
     characterName: String
     characterDescription: String
     characterImagePath: String
     characterImageExt: String
   }
 
-  type SavedCharacters {
-    characterId: Number!
+  input SavedCharacters {
+    characterId: ID!
     characterName: String
     characterDescription: String
     characterImagePath: String

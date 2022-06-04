@@ -10,7 +10,7 @@ const LoginForm = () => {
   const [showAlert, setShowAlert] = useState(false);
 
 
-  const [loginUser, {error}] = useMutation(LOGIN_USER)
+  const [login] = useMutation(LOGIN_USER)
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -29,7 +29,7 @@ const LoginForm = () => {
     }
 
     try {
-      const {data} = await loginUser({
+      const {data} = await login({
         variables:{...userFormData}
       })
 

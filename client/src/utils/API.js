@@ -20,7 +20,7 @@ export const getMe = (token) => {
     });
   };
   
-  export const loginUser = (userData) => {
+  export const login = (userData) => {
     return fetch('/api/users/login', {
       method: 'POST',
       headers: {
