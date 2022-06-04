@@ -1,3 +1,5 @@
+
+
 // route to get logged in user's info (needs the token)
 export const getMe = (token) => {
     return fetch('/api/users/me', {
@@ -49,7 +51,7 @@ export const getMe = (token) => {
   };
   
   // API GOES HERE!!!!!!!
-  export const searchGoogleBooks = (query) => {
-    return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+  export const searchCharacters = (searchInput) => {
+    return fetch(`hhttps://gateway.marvel.com:443/v1/public/characters?name=${searchInput}&apikey=4c60555fb25082e8557fd1240701259b`);
   };
   

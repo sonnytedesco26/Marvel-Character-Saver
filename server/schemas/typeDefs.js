@@ -11,14 +11,20 @@ const typeDefs = gql`
   }
 
   type Character {
-    characterId: ID
-    apiId: String!
+    characterId: Number!
+    characterName: String
+    characterDescription: String
+    characterImagePath: String
+    characterImageExt: String
   }
 
-  input SavedCharacters {
-    characterId: ID!
-    userId: ID!
-}
+  type SavedCharacters {
+    characterId: Number!
+    characterName: String
+    characterDescription: String
+    characterImagePath: String
+    characterImageExt: String
+  }
 
   type Auth {
       token: ID!
