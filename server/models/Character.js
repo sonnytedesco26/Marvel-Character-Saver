@@ -5,9 +5,18 @@ const characterSchema = new Schema({
     type: Number,
     required: true
   },
-  apiId: {
+  characterName: {
     type: String,
     required: true
+  },
+  characterDescription: {
+    type: String
+  },
+  characterImagePath: {
+    type: String
+  },
+  characterImageExt: {
+    type: String
   }
 });
 
