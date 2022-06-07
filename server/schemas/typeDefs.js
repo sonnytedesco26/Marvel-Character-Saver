@@ -1,5 +1,5 @@
 const { gql } = require('apollo-server-express');
-
+//ARRAY inicated with bracket, ! is required
 const typeDefs = gql`
   type User {
     _id: ID
