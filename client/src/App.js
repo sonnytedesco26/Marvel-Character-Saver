@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SearchCharacters from './pages/SearchCharacters';
 import SavedCharacters from './pages/SavedCharacters';
-import Navbar from './components/Navbar';
+import Navbar from './components/NavBar';
 import {
   ApolloClient,
   InMemoryCache,
