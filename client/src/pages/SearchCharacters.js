@@ -7,7 +7,6 @@ import Auth from '../utils/auth';
 import { saveCharacterIds, getSavedCharacterIds } from '../utils/localStorage';
 
 require('dotenv').config();
-console.log(process.env);
 
 
 const md5 = require('md5');
