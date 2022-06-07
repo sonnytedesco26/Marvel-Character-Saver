@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SearchCharacters from './pages/SearchCharacters';
 import SavedCharacters from './pages/SavedCharacters';
-import Navbar from './components/Navbar';
+import NavBar from './components/NavBar';
 import {
   ApolloClient,
   InMemoryCache,
@@ -37,7 +37,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <>
-          <Navbar />
+          <NavBar />
           <Switch>
             <Route exact path='/' component={SearchCharacters} />
             <Route exact path='/saved' component={SavedCharacters} />

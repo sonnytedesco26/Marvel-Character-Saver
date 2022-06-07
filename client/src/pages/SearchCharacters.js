@@ -5,9 +5,10 @@ import { useMutation } from '@apollo/client';
 import { SAVE_CHARACTER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { saveCharacterIds, getSavedCharacterIds } from '../utils/localStorage';
-// require('dotenv').config();
-const PUBLIC_KEY = '4c60555fb25082e8557fd1240701259b';
-const PRIVATE_KEY = 'f776fea30bec9385fe20297322454dd551aea210';
+
+require('dotenv').config();
+console.log(process.env);
+
 
 const md5 = require('md5');
 
@@ -33,8 +34,8 @@ const SearchCharacters = () => {
 
     try {//MARVEL APII!!!!
       let ts = Date.now();
-      let hash = md5(ts+PRIVATE_KEY+PUBLIC_KEY);
-      const response = await fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${searchInput}&apikey=${PUBLIC_KEY}&ts=${ts}&hash=${hash}`);
+      let hash = md5(ts+process.env.REACT_APP_PRIVATE_KEY+process.env.REACT_APP_PUBLIC_KEY);
+      const response = await fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${searchInput}&apikey=${process.env.REACT_APP_PUBLIC_KEY}&ts=${ts}&hash=${hash}`);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
