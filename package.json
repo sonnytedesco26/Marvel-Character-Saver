@@ -18,6 +18,10 @@
     "concurrently": "5.1.0"
   },
   "dependencies": {
-    "if-env": "1.0.4"
+    "dotenv": "^16.0.1",
+    "find-config": "^1.0.0",
+    "if-env": "1.0.4",
+    "md5": "^2.3.0",
+    "path": "^0.12.7"
   }
 }

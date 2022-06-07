@@ -21,19 +21,19 @@ const SignupForm = () => {
   };
 
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
+   event.preventDefault();
 
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-
+    //console.log(userFormData);
     try {
       const {data} = await createUser({
         variables: {...userFormData}
       });
-      Auth.login(data.createUser.token);
+      Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
     }
@@ -47,7 +47,6 @@ const SignupForm = () => {
 
   return (
     <>
-      {/* needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your signup!

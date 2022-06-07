@@ -55,8 +55,8 @@ const SavedCharacters = () => {
           {userData.savedCharacters?.map((character) => {
             return (
               <Card key={character.characterId} border='dark'>
-                {character.characterImagePath+character.characterImageExt ? (
-                  <Card.Img src={character.characterImagePath+character.characterImageExt} alt={`${character.characterName}`} variant='top' />
+                {character.characterImagePath+'.'+character.characterImageExt ? (
+                  <Card.Img src={character.characterImagePath+'.'+character.characterImageExt} alt={`${character.characterName}`} variant='top' />
                 ) : null}
                 <Card.Body>
                   <Card.Title>{character.characterName}</Card.Title>

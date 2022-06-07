@@ -1,12 +1,15 @@
 //NEEDS FIXING AUTHORIZATION API
-
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import { SAVE_CHARACTER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { saveCharacterIds, getSavedCharacterIds } from '../utils/localStorage';
+// require('dotenv').config();
+const PUBLIC_KEY = '4c60555fb25082e8557fd1240701259b';
+const PRIVATE_KEY = 'f776fea30bec9385fe20297322454dd551aea210';
 
+const md5 = require('md5');
 
 const SearchCharacters = () => {
   // create state for holding returned api data
@@ -29,19 +32,22 @@ const SearchCharacters = () => {
     }
 
     try {//MARVEL APII!!!!
-      const response = await fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${searchInput}&apikey=4c60555fb25082e8557fd1240701259b`);
+      let ts = Date.now();
+      let hash = md5(ts+PRIVATE_KEY+PUBLIC_KEY);
+      const response = await fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${searchInput}&apikey=${PUBLIC_KEY}&ts=${ts}&hash=${hash}`);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
 
-      const { items } = await response.json();
-      const characterData = items.map((data) => ({
-        characterId: data.results[0].id,
-        characterName: data.results[0].name,
-        characterDescription: data.results[0].description,
-        characterImagePath: data.results[0].thumbnail.path,
-        characterImageExt: data.results[0].thumbnail.extension
+      const {data}  = await response.json();
+      console.log(data);
+      const characterData = data.results.map((character) => ({
+        characterId: character.id,
+        characterName: character.name,
+        characterDescription: character.description,
+        characterImagePath: character.thumbnail.path,
+        characterImageExt: character.thumbnail.extension
     }));
 
       setSearchedCharacters(characterData);
@@ -111,8 +117,8 @@ const SearchCharacters = () => {
           {searchedCharacters.map((character) => {
             return (
               <Card key={character.characterId} border='dark'>
-                {character.characterImagePath+character.characterImageExt ? (
-                  <Card.Img src={character.characterImagePath+character.characterImageExt} alt={`${character.characterName}`} variant='top' />
+                {character.characterImagePath+'.'+character.characterImageExt ? (
+                  <Card.Img src={character.characterImagePath+'.'+character.characterImageExt} alt={`${character.characterName}`} variant='top' />
                 ) : null}
                 <Card.Body>
                   <Card.Title>{character.characterName}</Card.Title>
