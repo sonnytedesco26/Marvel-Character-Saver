@@ -34,7 +34,7 @@ const SearchCharacters = () => {
     try {//MARVEL APII!!!!
       let ts = Date.now();
       let hash = md5(ts+PRIVATE_KEY+PUBLIC_KEY);
-      const response = await fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${searchInput}&apikey=${PUBLIC_KEY}&ts=${ts}&hash=${hash}`);
+      const response = await fetch(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchInput}&apikey=${PUBLIC_KEY}&ts=${ts}&hash=${hash}`);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
