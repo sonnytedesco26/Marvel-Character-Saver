@@ -3,13 +3,16 @@
 ## Description
 This project uses data from the Marvel api. Users can search their favorite superhero, and find out a brief description and featured comic books of that superhero. MongoDB was used for the database on the backend.
 
+## DEMO
+
+URL: https://drive.google.com/file/d/1IRDvYdC-Tj2uMu9hWll08oqTYlwCkYd5/view?usp=sharing
+
 ## Built With
 * Javascript
 * Node
 * Express.js
 * GraphQL
 * MongoDB
-
 
 
 ## Table of Contents
