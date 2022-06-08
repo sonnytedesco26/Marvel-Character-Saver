@@ -1,13 +1,14 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const characterSchema = require('./Character');
+
 const userSchema = new Schema(
   {
     username: {
       type: String,
       required: true,
       unique: true,
-      trim: true
     },
     email: {
       type: String,
@@ -18,20 +19,8 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
-      minlength: 5
     },
-    thoughts: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Thought'
-      }
-    ],
-    friends: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    ]
+    savedCharacters: [characterSchema],
   },
   {
     toJSON: {
@@ -54,10 +43,6 @@ userSchema.pre('save', async function(next) {
 userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
-
-userSchema.virtual('friendCount').get(function() {
-  return this.friends.length;
-});
 
 const User = model('User', userSchema);
 
