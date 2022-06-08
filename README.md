@@ -1,12 +1,12 @@
 # Marvel-Character-Saver
 
 ## Description
-This project uses data from the Marvel api. Users can search their favorite superhero, and find out a brief description and featured comic books of that superhero. MongoDB was used for the database on the backend.
+This project uses data from the Marvel API. Users can search their favorite superhero, and find out a brief description and featured comic books of that superhero. MongoDB was used for the database on the backend.
 
 ## Built With
 * Javascript
 * Node
-* Express.js
+* Express
 * GraphQL
 * MongoDB
 
