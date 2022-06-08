@@ -33,14 +33,14 @@ const SearchCharacters = () => {
     try {//MARVEL APII!!!!
       let ts = Date.now();
       let hash = md5(ts+process.env.REACT_APP_PRIVATE_KEY+process.env.REACT_APP_PUBLIC_KEY);
-      const response = await fetch(`https://gateway.marvel.com:443/v1/public/characters?name=${searchInput}&apikey=${process.env.REACT_APP_PUBLIC_KEY}&ts=${ts}&hash=${hash}`);
+      const response = await fetch(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchInput}&apikey=${process.env.REACT_APP_PUBLIC_KEY}&ts=${ts}&hash=${hash}`);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
 
       const {data}  = await response.json();
-      console.log(data);
+      
       const characterData = data.results.map((character) => ({
         characterId: character.id,
         characterName: character.name,
@@ -72,7 +72,7 @@ const SearchCharacters = () => {
       await saveCharacter({
         variables: { characterData: { ...characterToSave } },
       });
-      console.log(savedCharacterIds);
+     
       setSavedCharacterIds([...savedCharacterIds, characterToSave.characterId]);
     } catch (e) {
       console.error(e);
